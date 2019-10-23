@@ -1,12 +1,7 @@
 ﻿using System;
 
-namespace FastFood
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
+class Sorvete : Alimento{
+  private float preco=3.0f;
+  private float custo=1.5f;
+ 
 }
