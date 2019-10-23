@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FastFood
+namespace FastFoodLeo
 {
     class Program
     {

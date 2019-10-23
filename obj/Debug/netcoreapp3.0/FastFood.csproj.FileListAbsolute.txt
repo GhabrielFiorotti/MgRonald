@@ -9,3 +9,8 @@ C:\Users\Windows\Desktop\FastFood\obj\Debug\netcoreapp3.0\FastFood.AssemblyInfoI
 C:\Users\Windows\Desktop\FastFood\obj\Debug\netcoreapp3.0\FastFood.AssemblyInfo.cs
 C:\Users\Windows\Desktop\FastFood\obj\Debug\netcoreapp3.0\FastFood.dll
 C:\Users\Windows\Desktop\FastFood\obj\Debug\netcoreapp3.0\FastFood.pdb
+c:\Users\Windows\Desktop\FastFoodLeo\obj\Debug\netcoreapp3.0\FastFood.csprojAssemblyReference.cache
+c:\Users\Windows\Desktop\FastFoodLeo\obj\Debug\netcoreapp3.0\FastFood.AssemblyInfoInputs.cache
+c:\Users\Windows\Desktop\FastFoodLeo\obj\Debug\netcoreapp3.0\FastFood.AssemblyInfo.cs
+c:\Users\Windows\Desktop\FastFoodLeo\obj\Debug\netcoreapp3.0\FastFood.dll
+c:\Users\Windows\Desktop\FastFoodLeo\obj\Debug\netcoreapp3.0\FastFood.pdb

@@ -6,40 +6,44 @@ class Bebidas : Alimento {
   private string tipo;
   private float custo;
 
-  private void EscolherTipo(string tipo){
-
+  public void setTipo(string tipo){
     if (tipo == "Refrigerante") {
       this.tipo = tipo;
-      this.preco= 5;
-      this.custo = 3.0f;
+      this.preco= 3+qtd;
+      this.custo = 2.60f;
       Grava.GravaCusto(custo);
       Grava.GravaLucroBruto(preco);
     }else if (tipo == "Suco") {
       this.tipo = tipo;
-      this.preco= 8.5f;
-      this.custo = 5.3f; 
+      this.preco= 5f+qtd;
+      this.custo = 4f; 
       Grava.GravaCusto(custo);
       Grava.GravaLucroBruto(preco);
     }else if(tipo == "Cerveja"){
       this.tipo = tipo;
-      this.preco= 8.5f;
+      this.preco= 6.50f+qtd;
       this.custo = 4;
       Grava.GravaCusto(custo);
       Grava.GravaLucroBruto(preco);
     }
   }
 
-  private void setQuantidade(float qtd){
-    this.qtd=qtd;
+  public void setQuantidade(int quanti){
+    if(quanti==1)
+      this.qtd = 3f;
+    else if(quanti==2)
+      this.qtd = 5.5f;
+    else
+      this.qtd = 10f;
   }
 
-  public void SetNome(string tipo){
+  public void setNome(string tipo){
     nome = tipo;
   }
 
   public void Retorno(){
-    Console.WriteLine("======================= {0} ========================",nome);
-    Console.WriteLine("Bebida\n");
+    Console.WriteLine("======================= {0} ========================",this.nome);
+    Console.WriteLine("Bebida\n tipo ={0}",tipo);
     Console.WriteLine("======================= Preco: {0} =========================",preco);
   }
 }

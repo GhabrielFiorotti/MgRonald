@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Windows\\Desktop\\FastFood\\FastFood.csproj": {}
+    "C:\\Users\\Windows\\Desktop\\FastFoodLeo\\FastFood.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Windows\\Desktop\\FastFood\\FastFood.csproj": {
+    "C:\\Users\\Windows\\Desktop\\FastFoodLeo\\FastFood.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Windows\\Desktop\\FastFood\\FastFood.csproj",
+        "projectUniqueName": "C:\\Users\\Windows\\Desktop\\FastFoodLeo\\FastFood.csproj",
         "projectName": "FastFood",
-        "projectPath": "C:\\Users\\Windows\\Desktop\\FastFood\\FastFood.csproj",
+        "projectPath": "C:\\Users\\Windows\\Desktop\\FastFoodLeo\\FastFood.csproj",
         "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Windows\\Desktop\\FastFood\\obj\\",
+        "outputPath": "C:\\Users\\Windows\\Desktop\\FastFoodLeo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config"
