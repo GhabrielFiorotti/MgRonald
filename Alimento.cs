@@ -7,7 +7,6 @@ class Alimento{
       get{return nome;}
       set{nome=value;}
     }
-
   
   protected bool comestivel = true;  
   public bool Cosmestivel

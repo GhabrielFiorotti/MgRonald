@@ -3,17 +3,16 @@ using System.IO;
 using System.Text;
 
 class Ler {
-
   public float LerTxt1(){
-    int conteud =0;
-    int totalLucro =0;
+    float conteud =0;
+    float totalLucro =0;
 
     FileStream txtLucro = new FileStream("Lucro.txt",FileMode.Open,FileAccess.Read);
     
     StreamReader srLucro = new StreamReader(txtLucro, Encoding.UTF8);
 
     while(!srLucro.EndOfStream){
-      conteud =int.Parse(srLucro.ReadLine());
+      conteud =float.Parse(srLucro.ReadLine());
       totalLucro+=conteud;
     }
     srLucro.Close();
@@ -21,8 +20,6 @@ class Ler {
 
     return totalLucro;
   } 
-
-
 
   public float LerTxt2(){
     float conteud =0;

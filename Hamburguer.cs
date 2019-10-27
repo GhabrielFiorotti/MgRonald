@@ -36,8 +36,8 @@ class Hamburguer : Alimento{
   }
 
   public void Retorno(){
-    Console.WriteLine("======================= {0} ========================",nome);
+    Console.WriteLine("============= {0} =============",nome);
     Console.WriteLine("Preco Inicial: 8R$\nAdicionais: {0}-Saladas {1}-Bifes {2}-Ovos",salada-1,qtdBife-1, ovo-1);
-    Console.WriteLine("======================= Preco final com os adicionais: {0} R$ =========================",getPreco());
+    Console.WriteLine("============ Preço: {0} R$ =============",getPreco());
   }
 }

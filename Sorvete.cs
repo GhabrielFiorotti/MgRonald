@@ -5,7 +5,7 @@ class Sorvete : Alimento {
   private string tipo;
   private float custo;
 
-  private void TipoSorvete(string tipo){
+  public void setTipo(string tipo){
     if (tipo == "Casquinha") {
       this.tipo = tipo;
       this.preco= 3;
@@ -18,7 +18,7 @@ class Sorvete : Alimento {
       this.custo = 1f; 
       Grava.GravaCusto(custo);
       Grava.GravaLucroBruto(preco);
-    }else if(tipo == "Milk Shake"){
+    }else if(tipo == "MilkShake"){
       this.tipo = tipo;
       this.preco= 8.5f;
       this.custo = 4;
@@ -32,8 +32,8 @@ class Sorvete : Alimento {
   }
 
   public void Retorno(){
-    Console.WriteLine("======================= {0} ========================",nome);
-    Console.WriteLine("Bebida\n");
-    Console.WriteLine("======================= Preco: {0} =========================",preco);
+    Console.WriteLine("============== {0} ==============",this.nome);
+    Console.WriteLine("Tipo: {0}",this.tipo);
+    Console.WriteLine("============= Preço: {0} R$ ============",this.preco);
   }
 }

@@ -42,8 +42,8 @@ class Bebidas : Alimento {
   }
 
   public void Retorno(){
-    Console.WriteLine("======================= {0} ========================",this.nome);
-    Console.WriteLine("Bebida\n tipo ={0}",tipo);
-    Console.WriteLine("======================= Preco: {0} =========================",preco);
+    Console.WriteLine("================ {0} ================",this.nome);
+    Console.WriteLine("Bebida\nTipo - {0}",tipo);
+    Console.WriteLine("============= Preço: {0} R$ ===============",preco);
   }
 }

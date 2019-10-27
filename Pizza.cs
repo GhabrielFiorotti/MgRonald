@@ -31,13 +31,13 @@ class Pizza : Alimento{
     return preco;
   }
 
- public void setNome(string name){
+  public void setNome(string name){
     nome = name;
   }
 
   public void Retorno(){
-    Console.WriteLine("====================={0}=====================",this.nome);
-    Console.WriteLine("Tamanho: {2} pedaços \nAdicionais: {0}-Azeitona {1}-Mussarela",azeitona,mussarela, tamanho);
-    Console.WriteLine("===================Preco : {0}===================",getPreco());
+    Console.WriteLine("=============== {0} ===============",this.nome);
+    Console.WriteLine("Tamanho: {2} pedaços \nAdicionais: {0}-Azeitona e {1}-Mussarela",azeitona,mussarela, tamanho);
+    Console.WriteLine("============ Preço: {0} R$ ============",getPreco());
   }
 }
