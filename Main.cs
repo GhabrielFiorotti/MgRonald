@@ -1,8 +1,12 @@
 using System;
 using System.Threading;
+using System.Collections.Generic;
 
 class MainClass {
   public static void Main (string[] args) {
+    List<string> cliente = new List<string>();
+
+
     Console.Clear();
 
     bool flag = true;
@@ -14,6 +18,10 @@ class MainClass {
       Console.Clear();
 
       if (escolha == 1){
+        Console.WriteLine("coloque o seu nome");
+        cliente.Add(Console.ReadLine());
+        Console.Clear();
+
         Console.WriteLine ("===========================================================              \n                  Olá, seja bem vindo !!! \n\nPrimeiramente, escolha o seu pedido:\n===========================================================\nDigite 1 para Hambúrguer\nDigite 2 para Pizza\nDigite 3 para Bebidas\nDigite 4 para Sorvete");
         int pedido = int.Parse(Console.ReadLine());
         switch (pedido)
@@ -34,13 +42,18 @@ class MainClass {
               ham.setAdicional(salada, hamburguer, ovo);
               ham.setNome("Hambúrguer");
               Console.Clear();
+              foreach(string nome in cliente)
+                Console.WriteLine("Cliente => {0}",nome);
               ham.Retorno();
             }
             else{
               ham.setNome("Hambúrguer");
               Console.Clear();
+              foreach(string nome in cliente)
+                Console.WriteLine("Cliente => {0}",nome);
               ham.Retorno();
             }
+            cliente.RemoveAt(0);
             break;
 
           case 2:
@@ -55,7 +68,7 @@ class MainClass {
               pizza.setTamanho(8);
             else
               pizza.setTamanho(10);
-            
+
             Console.WriteLine("\nIrá querer algum adicional?\nDigite 1 para Sim e 2 para não");
 
             int adicionalPizza = int.Parse(Console.ReadLine());
@@ -72,19 +85,25 @@ class MainClass {
               pizza.setAdicional(mussarela, azeitona);
               pizza.setNome("Pizza");
               Console.Clear();
+              foreach(string nome in cliente)
+                Console.WriteLine("Cliente => {0}",nome);
               pizza.Retorno();
             }
             else{
               pizza.setNome("Pizza");
               Console.Clear();
+              foreach(string nome in cliente)
+                Console.WriteLine("Cliente => {0}",nome);
               pizza.Retorno();
             }
+            cliente.RemoveAt(0);
+
             break;
 
             case 3:
               Bebidas bebida = new Bebidas();
               Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para Refrigerante \nDigite 2 para Suco\nDigite 3 para Refrigerante");
-            
+
               int resposta3 = int.Parse(Console.ReadLine());
 
               Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para 300 ml \nDigite 2 para 600 ml\nDigite 3 para 2 litros");
@@ -94,13 +113,18 @@ class MainClass {
               if (resposta3 == 1)
                 bebida.setTipo("Refrigerante");
               else if(resposta3 == 2)
-                bebida.setTipo("Suco");            
+                bebida.setTipo("Suco");
               else
                 bebida.setTipo("Cerveja");
-              
+
               bebida.setNome("Bebida");
               Console.Clear();
+              foreach(string nome in cliente)
+                Console.WriteLine("Cliente => {0}",nome);
               bebida.Retorno();
+
+              cliente.RemoveAt(0);
+
               break;
 
             case 4:
@@ -118,12 +142,16 @@ class MainClass {
 
               sorvete.setNome("Sorvete");
               Console.Clear();
+              foreach(string nome in cliente)
+                Console.WriteLine("Cliente => {0}",nome);
               sorvete.Retorno();
+
+              cliente.RemoveAt(0);
               break;
-        
+
         }
       }
-      
+
       else if(escolha == 2){
         Console.WriteLine("Digite a senha para entrar:");
         string senha = Console.ReadLine();
@@ -134,15 +162,15 @@ class MainClass {
           if(Egestor.Gestor() > 20.00)
             Console.WriteLine("A Taxa de lucro está exorbitante");
           else if (Egestor.Gestor() > 0.00)
-            Console.WriteLine("A taxa de lucro está normal talvez seja melhor repensar o negócio");  
+            Console.WriteLine("A taxa de lucro está normal talvez seja melhor repensar o negócio");
           else
-            Console.WriteLine("A taxa de lucro está negativa seu negócio gera prejuízo");  
+            Console.WriteLine("A taxa de lucro está negativa seu negócio gera prejuízo");
         }
         else
           Console.WriteLine("\nSenha incorreta");
       }
       else
         flag= false;
-    }  
+    }
   }
 }
