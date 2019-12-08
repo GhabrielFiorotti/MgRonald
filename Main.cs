@@ -4,18 +4,19 @@ using System.Collections.Generic;
 
 class MainClass
 {
-  public static void mostrarError(){
-    Console.Clear();
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Digite os comandos corretamente\n");
-  }
+    public static void mostrarError()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Digite os comandos corretamente\n");
+    }
 
     public static void Main(string[] args)
     {
         List<string> cliente = new List<string>();
         int validacao;
-        int escolhaAdicional=0;
-        int numeroEscolhido=0;
+        int escolhaAdicional = 0;
+        int numeroEscolhido = 0;
         Console.Clear();
 
         Console.WriteLine("Insira seu nome:");
@@ -26,17 +27,20 @@ class MainClass
         {
             Console.ResetColor();
             Console.WriteLine("Digite o número de acordo com o que deseja:\n\n---------------- CARDÁPIO ----------------\n1 - Hambúrguer\n2 - Hambúrguer de calabresa\n3 - Xtudo\n4 - Dobradão\n5 - Pizza\n6 - Pizza de catupiry\n7 - Bebidas\n8 - Sorvete\n------------------------------------------\n\n----------------- GESTÃO -----------------\n9 - Gestor\n------------------------------------------");
-            try{
-              numeroEscolhido = int.Parse(Console.ReadLine());
-              Console.Clear();
-              if ((numeroEscolhido != 1) && (numeroEscolhido !=7) && (numeroEscolhido<8) && (numeroEscolhido>0)){
-                Console.WriteLine("Deseja adicional?\nDigite 1 para sim e 2 para não");
-                escolhaAdicional = int.Parse(Console.ReadLine());
+            try
+            {
+                numeroEscolhido = int.Parse(Console.ReadLine());
                 Console.Clear();
-              }
+                if ((numeroEscolhido != 1) && (numeroEscolhido != 7) && (numeroEscolhido < 8) && (numeroEscolhido > 0))
+                {
+                    Console.WriteLine("Deseja adicional?\nDigite 1 para sim e 2 para não");
+                    escolhaAdicional = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                }
             }
-            catch(FormatException){
-              mostrarError();
+            catch (FormatException)
+            {
+                mostrarError();
             }
             if (numeroEscolhido == 1)
             {
@@ -68,11 +72,13 @@ class MainClass
                         Console.WriteLine("Gostaria de um acompanhamento gratuito?\nDigite 1 para sim e 2 para não");
                         validacao = int.Parse(Console.ReadLine());
 
-                        if (validacao ==1)  {
+                        if (validacao == 1)
+                        {
                             Console.Clear();
                             hamCalabresa.AcompanhamentoAleatorio = true;
-                        }    
-                        else{
+                        }
+                        else
+                        {
                             Console.Clear();
                             hamCalabresa.AcompanhamentoAleatorio = false;
                         }
@@ -183,7 +189,7 @@ class MainClass
                         cliente.RemoveAt(0);
                         break;
                     case 2:
-                      Console.Clear();
+                        Console.Clear();
                         Console.WriteLine("Gostaria de um acompanhamento gratuito?\nDigite 1 para sim e 2 para não");
                         validacao = int.Parse(Console.ReadLine());
                         if (validacao == 1)
@@ -232,7 +238,7 @@ class MainClass
                         cliente.RemoveAt(0);
                         break;
                     case 2:
-                    Console.Clear();
+                        Console.Clear();
                         Console.WriteLine("Gostaria de uma borda recheada?, Digite 1 para sim e 2 para não");
                         validacao = int.Parse(Console.ReadLine());
                         if (validacao == 1)
@@ -246,59 +252,69 @@ class MainClass
                         break;
                 }
             }
-            else if(numeroEscolhido==7){
-              Bebidas bebida = new Bebidas();
+            else if (numeroEscolhido == 7)
+            {
+                Bebidas bebida = new Bebidas();
                 Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para Refrigerante \nDigite 2 para Suco\nDigite 3 para Refrigerante");
-                try{
-                  int resposta3 = int.Parse(Console.ReadLine());
+                try
+                {
+                    int resposta3 = int.Parse(Console.ReadLine());
 
-                  Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para 300 ml \nDigite 2 para 600 ml\nDigite 3 para 2 litros");
-                  int quantidade = int.Parse(Console.ReadLine());
-                  bebida.setQuantidade(quantidade);
-                  if((quantidade <=3) && (quantidade >=1)){
-                    if (resposta3 == 1)
-                      bebida.setTipo("Refrigerante");
-                    else if(resposta3 == 2)
-                      bebida.setTipo("Suco");            
+                    Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para 300 ml \nDigite 2 para 600 ml\nDigite 3 para 2 litros");
+                    int quantidade = int.Parse(Console.ReadLine());
+                    bebida.setQuantidade(quantidade);
+                    if ((quantidade <= 3) && (quantidade >= 1))
+                    {
+                        if (resposta3 == 1)
+                            bebida.setTipo("Refrigerante");
+                        else if (resposta3 == 2)
+                            bebida.setTipo("Suco");
+                        else
+                            bebida.setTipo("Cerveja");
+
+                        bebida.setNome("Bebida");
+                        Console.Clear();
+                        bebida.Retorno();
+                    }
                     else
-                      bebida.setTipo("Cerveja");
-                    
-                    bebida.setNome("Bebida");
-                    Console.Clear();
-                    bebida.Retorno();
-                  }
-                  else{
-                    mostrarError();
-                  }
+                    {
+                        mostrarError();
+                    }
                 }
-                catch(FormatException){
-                  mostrarError();
+                catch (FormatException)
+                {
+                    mostrarError();
                 }
             }
-            else if (numeroEscolhido==8){
-              Sorvete sorvete = new Sorvete();
+            else if (numeroEscolhido == 8)
+            {
+                Sorvete sorvete = new Sorvete();
                 Console.WriteLine("\nEscolha o tipo de sorvete:\nDigite 1 para casquinha\nDigite 2 para copinho\nDigite 3 para Milk Shake");
-                try{
-                  int resposta4 = int.Parse(Console.ReadLine());
-                  if((resposta4 <=3) && (resposta4 >=1)){
-                    if(resposta4==1)
-                      sorvete.setTipo("Casquinha");
-                    else if (resposta4==2)
-                      sorvete.setTipo("Copo");
-                    else
-                      sorvete.setTipo("MilkShake");
+                try
+                {
+                    int resposta4 = int.Parse(Console.ReadLine());
+                    if ((resposta4 <= 3) && (resposta4 >= 1))
+                    {
+                        if (resposta4 == 1)
+                            sorvete.setTipo("Casquinha");
+                        else if (resposta4 == 2)
+                            sorvete.setTipo("Copo");
+                        else
+                            sorvete.setTipo("MilkShake");
 
-                    sorvete.setNome("Sorvete");
-                    Console.Clear();
-                    sorvete.Retorno();
+                        sorvete.setNome("Sorvete");
+                        Console.Clear();
+                        sorvete.Retorno();
+                    }
+                    else
+                    {
+                        mostrarError();
+                    }
                 }
-                else{
-                  mostrarError();
+                catch (FormatException)
+                {
+                    mostrarError();
                 }
-                }
-                catch(FormatException){
-                  mostrarError();
-              }
             }
             else if (numeroEscolhido == 9)
             {
@@ -320,7 +336,7 @@ class MainClass
                     Console.WriteLine("\nSenha incorreta\n");
             }
             else
-              mostrarError();
+                mostrarError();
 
         }
     }
