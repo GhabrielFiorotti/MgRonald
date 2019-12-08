@@ -1,43 +1,38 @@
 using System;
 
-class Pizza : Alimento{
-  private int tamanho;
-  private float custo=18;
-  private int azeitona = 1;
-  private int mussarela=5;
-  private int sabor=1;
-  private float preco;
-
-  public void setAdicional(int mussarela, int azeitona){
-    this.mussarela+=mussarela;
-    this.azeitona+=azeitona;
-  }
-
-  public void setTamanho(int tam){
-      tamanho = tam;
-  }
-   
-  public float getPreco(){
-    if (azeitona==1 && mussarela == 5 && sabor == 1)
-      preco =4*tamanho;
-    else{
-      custo += (0.1f*this.azeitona) + (0.3f*this.mussarela);
-      float precoAdAzei=0.1f*this.azeitona;
-      float precoAdMussa =0.5f*this.mussarela;
-      preco= (4*tamanho) + precoAdMussa+precoAdAzei;
+class Pizza{
+  protected string nome;
+  public string Nome 
+    {
+      get{return nome;}
+      set{nome=value;}
     }
-    Grava.GravaCusto(custo);
-    Grava.GravaLucroBruto(preco);
-    return preco;
+  //protected float caloria;
+  protected double valorCusto;
+  protected double valorVenda;
+  protected Produto produtoPizza = new Produto();
+
+  
+  public Pizza(){
+    produtoPizza.Massa = 1;
+    produtoPizza.Queijos = 6;
+    produtoPizza.Tomate = 4;
+    produtoPizza.Palmito = 2;
+    produtoPizza.Ovo = 2;
   }
 
   public void setNome(string name){
     nome = name;
   }
 
-  public void Retorno(){
-    Console.WriteLine("=============== {0} ===============",this.nome);
-    Console.WriteLine("Tamanho: {2} pedaços \nAdicionais: {0}-Azeitona e {1}-Mussarela",azeitona,mussarela, tamanho);
-    Console.WriteLine("============ Preço: {0} R$ ============",getPreco());
+  public void retorno(){
+    valorCusto=produtoPizza.getPrecoCusto();
+    Grava.GravaCusto(valorCusto);
+
+    valorVenda=produtoPizza.getPrecoVenda();
+    Grava.GravaLucroBruto(valorVenda);
+    Console.Clear();
+    Console.WriteLine("Nome-> "+nome+"\nPreço-> "+valorVenda.ToString("N2")+"\nCalorias-> 1200\n");
   }
+
 }
