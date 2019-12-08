@@ -1,6 +1,6 @@
 ﻿using System;
 
-class Sorvete : Alimento {
+class Sorvete : Gelados {
   private float preco;
   private string tipo;
   private float custo;

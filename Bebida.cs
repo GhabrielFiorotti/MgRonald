@@ -1,6 +1,6 @@
 using System;
 
-class Bebidas : Alimento {
+class Bebidas : Gelados {
   private float preco;
   private float qtd;
   private string tipo;

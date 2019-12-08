@@ -2,9 +2,9 @@ using System;
 
 public static class Egestor{
   public static float Gestor(){
-    Ler lendo = new Ler();      
-    float lucro= lendo.LerTxt1();
-    float custo=lendo.LerTxt2();
+    Leitura lendo = new Leitura();      
+    float lucro= lendo.lerTxtLucro();
+    float custo=lendo.lerTxtCusto();
 
     float lucroLiquido = lucro-custo;
 

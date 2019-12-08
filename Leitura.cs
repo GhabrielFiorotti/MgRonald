@@ -2,8 +2,8 @@ using System;
 using System.IO;
 using System.Text;
 
-class Ler {
-  public float LerTxt1(){
+class Leitura {
+  public float lerTxtLucro(){
     float conteud =0;
     float totalLucro =0;
 
@@ -21,7 +21,7 @@ class Ler {
     return totalLucro;
   } 
 
-  public float LerTxt2(){
+  public float lerTxtCusto(){
     float conteud =0;
     float totalLucro =0;
 

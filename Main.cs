@@ -4,270 +4,324 @@ using System.Collections.Generic;
 
 class MainClass
 {
-
-    public static void mostrarError()
-    {
-        Console.Clear();
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Digite os comandos corretamente");
-    }
+  public static void mostrarError(){
+    Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Digite os comandos corretamente\n");
+  }
 
     public static void Main(string[] args)
     {
+        List<string> cliente = new List<string>();
+        int validacao;
+        int escolhaAdicional=0;
+        int numeroEscolhido=0;
         Console.Clear();
-        bool continuacao = true;
-        int n = 0;
-        while (continuacao)
+
+        Console.WriteLine("Insira seu nome:");
+        cliente.Add(Console.ReadLine());
+        Console.Clear();
+
+        while (true)
         {
-            bool verificarOpção = true;
-            int escolha = 0;
-            while (verificarOpção)
+            Console.ResetColor();
+            Console.WriteLine("Digite o número de acordo com o que deseja:\n\n---------------- CARDÁPIO ----------------\n1 - Hambúrguer\n2 - Hambúrguer de calabresa\n3 - Xtudo\n4 - Dobradão\n5 - Pizza\n6 - Pizza de catupiry\n7 - Bebidas\n8 - Sorvete\n------------------------------------------\n\n----------------- GESTÃO -----------------\n9 - Gestor\n------------------------------------------");
+            try{
+              numeroEscolhido = int.Parse(Console.ReadLine());
+              Console.Clear();
+              if ((numeroEscolhido != 1) && (numeroEscolhido !=7) && (numeroEscolhido<8) && (numeroEscolhido>0)){
+                Console.WriteLine("Deseja adicional?\nDigite 1 para sim e 2 para não");
+                escolhaAdicional = int.Parse(Console.ReadLine());
+                Console.Clear();
+              }
+            }
+            catch(FormatException){
+              mostrarError();
+            }
+            if (numeroEscolhido == 1)
             {
-                Console.ResetColor();
-                Console.WriteLine("\n============================\n1 = funcionario | 2 = Gestor\n============================");
-                try
+                Hamburguer ham = new Hamburguer();
+                ham.setNome("Hambúrguer");
+                ham.retorno();
+            }
+            else if (numeroEscolhido == 2)
+            {
+                HamCalabresa hamCalabresa = new HamCalabresa();
+                hamCalabresa.setNome("Hambúrguer Calabresa");
+                switch (escolhaAdicional)
                 {
-                    escolha = int.Parse(Console.ReadLine());
-                    verificarOpção = false;
-                    Console.Clear();
-                }
-                catch (FormatException)
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Só de entrada com 1 ou 2");
+                    case 1:
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Deseja acrescentar qual adicional?\n\nBife\nAlface\nTomate\nPicles\nBatata\nOvo\nCalabresa\nQueijos\nAzeitona\n");
+                            string tipo = Console.ReadLine().ToLower();
+                            Console.Clear();
+                            Console.WriteLine("Quantas unidades->");
+                            int qtd = int.Parse(Console.ReadLine());
+                            hamCalabresa.setAdicional(tipo, qtd);
+                            Console.Clear();
+                            Console.WriteLine("Irá querer mais algum adicional?\nDigite 1 para sim e 2 para não");
+                            escolhaAdicional = int.Parse(Console.ReadLine());
+                        } while (escolhaAdicional == 1);
+                        Console.Clear();
+                        Console.WriteLine("Gostaria de um acompanhamento gratuito?\nDigite 1 para sim e 2 para não");
+                        validacao = int.Parse(Console.ReadLine());
+
+                        if (validacao ==1)  {
+                            Console.Clear();
+                            hamCalabresa.AcompanhamentoAleatorio = true;
+                        }    
+                        else{
+                            Console.Clear();
+                            hamCalabresa.AcompanhamentoAleatorio = false;
+                        }
+                        foreach (string nome in cliente)
+                            Console.WriteLine("Cliente => {0}", nome);
+                        hamCalabresa.retorno();
+
+                        cliente.RemoveAt(0);
+                        break;
+
+                    case 2:
+                        hamCalabresa.AcompanhamentoAleatorio = true;
+                        Console.WriteLine("Gostaria de um acompanhamento gratuito?\nDigite 1 para sim e 2 para não");
+                        validacao = int.Parse(Console.ReadLine());
+                        if (validacao == 1)
+                            hamCalabresa.AcompanhamentoAleatorio = true;
+                        else
+                            hamCalabresa.AcompanhamentoAleatorio = false;
+                        foreach (string nome in cliente)
+                            Console.WriteLine("Cliente => {0}", nome);
+                        hamCalabresa.retorno();
+
+                        cliente.RemoveAt(0);
+                        break;
                 }
             }
-
-            if (escolha == 1)
+            else if (numeroEscolhido == 3)
             {
-                int pedido = 0;
-                Console.WriteLine("===========================================================              \n                  Olá, seja bem vindo !!! \n\nPrimeiramente, escolha o seu pedido:\n===========================================================\nDigite 1 para Hambúrguer\nDigite 2 para Pizza\nDigite 3 para Bebidas\nDigite 4 para Sorvete");
-                try
+                HamXtudo hamXtudo = new HamXtudo();
+                hamXtudo.setNome("Xtudo");
+                switch (escolhaAdicional)
                 {
-                    pedido = int.Parse(Console.ReadLine());
+                    case 1:
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Deseja acrescentar qual adicional?\n\nBife\nAlface\nTomate\nPicles\nBatata\nOvo\nCalabresa\nQueijos\nAzeitona\n");
+                            string tipo = Console.ReadLine().ToLower();
+                            Console.Clear();
+                            Console.WriteLine("Quantas unidades->");
+                            int qtd = int.Parse(Console.ReadLine());
+                            hamXtudo.setAdicional(tipo, qtd);
+                            Console.Clear();
+                            Console.WriteLine("Irá querer mais algum adicional?\nDigite 1 para sim e 2 para não");
+                            escolhaAdicional = int.Parse(Console.ReadLine());
+
+                        } while (escolhaAdicional == 1);
+                        Console.Clear();
+                        Console.WriteLine("Gostaria de um acompanhamento gratuito?\nDigite 1 para sim e 2 para não");
+                        validacao = int.Parse(Console.ReadLine());
+                        if (validacao == 1)
+                            hamXtudo.AcompanhamentoAleatorio = true;
+                        else
+                            hamXtudo.AcompanhamentoAleatorio = false;
+                        foreach (string nome in cliente)
+                            Console.WriteLine("Cliente => {0}", nome);
+                        hamXtudo.retorno();
+                        cliente.RemoveAt(0);
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine("Gostaria de um acompanhamento gratuito?\nDigite 1 para sim e 2 para não");
+                        validacao = int.Parse(Console.ReadLine());
+                        if (validacao == 1)
+                            hamXtudo.AcompanhamentoAleatorio = true;
+                        else
+                            hamXtudo.AcompanhamentoAleatorio = false;
+                        foreach (string nome in cliente)
+                            Console.WriteLine("Cliente => {0}", nome);
+                        hamXtudo.retorno();
+                        cliente.RemoveAt(0);
+                        break;
                 }
-                catch (FormatException)
+
+            }
+            else if (numeroEscolhido == 4)
+            {
+                HamDobradao hamDobradao = new HamDobradao();
+                hamDobradao.setNome("Dobradão");
+                switch (escolhaAdicional)
                 {
-                    mostrarError();
-                }
-                if ((pedido <= 4) && (pedido >= 1))
-                {
-                    switch (pedido)
-                    {
-                        case 1:
-                            Hamburguer ham = new Hamburguer();
-                            int resposta = 0;
-                            Console.WriteLine("\nIrá querer algum adicional?\nDigite 1 para Sim e 2 para não");
-                            try
-                            {
-                                resposta = int.Parse(Console.ReadLine());
-                            }
-                            catch (FormatException)
-                            {
-                                mostrarError();
-                            }
+                    case 1:
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Deseja acrescentar qual adicional?\n\nBife\nAlface\nTomate\nPicles\nBatata\nOvo\nCalabresa\nQueijos\nAzeitona\n");
+                            string tipo = Console.ReadLine().ToLower();
+                            Console.Clear();
+                            Console.WriteLine("Quantas unidades->");
+                            int qtd = int.Parse(Console.ReadLine());
+                            Console.Clear();
+                            hamDobradao.setAdicional(tipo, qtd);
+                            Console.Clear();
+                            Console.WriteLine("Irá querer mais algum adicional?\nDigite 1 para sim e 2 para não");
+                            escolhaAdicional = int.Parse(Console.ReadLine());
 
-                            if (resposta == 1)
-                            {
-                                int hamburguer = 0;
-                                int salada = 0;
-                                int ovo = 0;
-                                try
-                                {
-                                    Console.WriteLine("Irá querer colocar quantos hamburgueres no seu lanche?");
-                                    hamburguer = int.Parse(Console.ReadLine());
-                                    Console.WriteLine("Irá querer colocar quantos salada no seu lanche?");
-                                    salada = int.Parse(Console.ReadLine());
-                                    Console.WriteLine("Irá querer colocar quantos ovos no seu lanche?");
-                                    ovo = int.Parse(Console.ReadLine());
+                        } while (escolhaAdicional == 1);
+                        Console.Clear();
+                        Console.WriteLine("Gostaria de um acompanhamento gratuito?\nDigite 1 para sim e 2 para não");
+                        validacao = int.Parse(Console.ReadLine());
+                        if (validacao == 1)
+                            hamDobradao.AcompanhamentoAleatorio = true;
+                        else
+                            hamDobradao.AcompanhamentoAleatorio = false;
+                        foreach (string nome in cliente)
+                            Console.WriteLine("Cliente => {0}", nome);
+                        hamDobradao.retorno();
+                        cliente.RemoveAt(0);
+                        break;
+                    case 2:
+                      Console.Clear();
+                        Console.WriteLine("Gostaria de um acompanhamento gratuito?\nDigite 1 para sim e 2 para não");
+                        validacao = int.Parse(Console.ReadLine());
+                        if (validacao == 1)
+                            hamDobradao.AcompanhamentoAleatorio = true;
+                        else
+                            hamDobradao.AcompanhamentoAleatorio = false;
+                        foreach (string nome in cliente)
+                            Console.WriteLine("Cliente => {0}", nome);
+                        hamDobradao.retorno();
 
-                                    // Nessa parte irá escolher os ingredientes adicionais, mudando com o set
-                                    ham.setAdicional(salada, hamburguer, ovo);
-                                    ham.setNome("Hambúrguer");
-                                    Console.Clear();
-                                    ham.Retorno();
-                                }
-                                catch
-                                {
-                                    Console.Clear();
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    mostrarError();
-                                }
-                            }
-                            else if (resposta == 2)
-                            {
-                                ham.setNome("Hambúrguer");
-                                Console.Clear();
-                                ham.Retorno();
-                            }
-                            else
-                            {
-                                mostrarError();
-                            }
-                            break;
-
-                        case 2:
-                            Pizza pizza = new Pizza();
-                            int resposta2 = 0;
-                            Console.WriteLine("\nEscolha o tamanho:\nDigite 1 para 6 pedaços\nDigite 2 para 8 pedaços\nDigite 3 para 10 pedaços");
-                            try
-                            {
-                                resposta2 = int.Parse(Console.ReadLine());
-                                if ((resposta2 <= 3) && (resposta2 >= 1))
-                                {
-                                    if (resposta2 == 1)
-                                        pizza.setTamanho(6);
-                                    else if (resposta2 == 2)
-                                        pizza.setTamanho(8);
-                                    else
-                                        pizza.setTamanho(10);
-
-                                    Console.WriteLine("\nIrá querer algum adicional?\nDigite 1 para Sim e 2 para não");
-
-                                    int adicionalPizza = int.Parse(Console.ReadLine());
-                                    if (adicionalPizza == 1)
-                                    {
-                                        Console.WriteLine("Irá querer mais mussarela?, Digite 1 para Sim e 2 para não");
-                                        int mussarela = int.Parse(Console.ReadLine());
-                                        if ((mussarela <= 2) && (mussarela >= 1))
-                                        {
-                                            if (mussarela == 1)
-                                                mussarela = 5;
-                                            Console.WriteLine("Irá querer mais azeitona?, Digite 1 para Sim e 2 para não");
-                                            int azeitona = int.Parse(Console.ReadLine());
-                                            if ((azeitona <= 2) && (azeitona >= 1))
-                                            {
-                                                if (azeitona == 1)
-                                                    azeitona = 2;
-
-                                                pizza.setAdicional(mussarela, azeitona);
-                                                pizza.setNome("Pizza");
-                                                Console.Clear();
-                                                pizza.Retorno();
-                                            }
-                                            else
-                                            {
-                                                mostrarError();
-                                            }
-                                        }
-                                        else
-                                        {
-                                            mostrarError();
-                                        }
-                                    }
-                                    else
-                                    {
-                                        mostrarError();
-                                    }
-                                }
-                                else
-                                {
-                                    mostrarError();
-                                }
-                            }
-                            catch (FormatException)
-                            {
-                                mostrarError();
-                            }
-                            break;
-
-                        case 3:
-                            Bebidas bebida = new Bebidas();
-                            Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para Refrigerante \nDigite 2 para Suco\nDigite 3 para Refrigerante");
-                            try
-                            {
-                                int resposta3 = int.Parse(Console.ReadLine());
-
-                                Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para 300 ml \nDigite 2 para 600 ml\nDigite 3 para 2 litros");
-                                int quantidade = int.Parse(Console.ReadLine());
-                                bebida.setQuantidade(quantidade);
-                                if ((quantidade <= 3) && (quantidade >= 1))
-                                {
-                                    if (resposta3 == 1)
-                                        bebida.setTipo("Refrigerante");
-                                    else if (resposta3 == 2)
-                                        bebida.setTipo("Suco");
-                                    else
-                                        bebida.setTipo("Cerveja");
-
-                                    bebida.setNome("Bebida");
-                                    Console.Clear();
-                                    bebida.Retorno();
-                                }
-                                else
-                                {
-                                    mostrarError();
-                                }
-                            }
-                            catch (FormatException)
-                            {
-                                mostrarError();
-                            }
-                            break;
-
-                        case 4:
-                            Sorvete sorvete = new Sorvete();
-                            Console.WriteLine("\nEscolha o tipo de sorvete:\nDigite 1 para casquinha\nDigite 2 para copinho\nDigite 3 para Milk Shake");
-                            try
-                            {
-                                int resposta4 = int.Parse(Console.ReadLine());
-                                if ((resposta4 <= 3) && (resposta4 >= 1))
-                                {
-                                    if (resposta4 == 1)
-                                        sorvete.setTipo("Casquinha");
-                                    else if (resposta4 == 2)
-                                        sorvete.setTipo("Copo");
-                                    else
-                                        sorvete.setTipo("MilkShake");
-
-                                    sorvete.setNome("Sorvete");
-                                    Console.Clear();
-                                    sorvete.Retorno();
-                                }
-                                else
-                                {
-                                    mostrarError();
-                                }
-                            }
-                            catch (FormatException)
-                            {
-                                mostrarError();
-                            }
-                            break;
-
-                    }
-                }
-                else
-                {
-                    mostrarError();
+                        cliente.RemoveAt(0);
+                        break;
                 }
             }
+            else if (numeroEscolhido == 5)
+            {
+                Pizza pizza = new Pizza();
+                pizza.setNome("pizza");
+                pizza.retorno();
+            }
+            else if (numeroEscolhido == 6)
+            {
+                PizzaCatupiry pizzaCatu = new PizzaCatupiry();
+                pizzaCatu.setNome("pizza de catupiry");
+                switch (escolhaAdicional)
+                {
+                    case 1:
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Deseja acrescentar qual adicional?\n\nBife\nAlface\nTomate\nPicles\nBatata\nOvo\nCalabresa\nQueijos\nAzeitona\n");
+                            string tipo = Console.ReadLine().ToLower();
+                            Console.Clear();
+                            Console.WriteLine("Quantas unidades->");
 
-            else if (escolha == 2)
+                            int qtd = int.Parse(Console.ReadLine());
+                            pizzaCatu.setAdicional(tipo, qtd);
+                            Console.Clear();
+                            Console.WriteLine("Irá querer mais algum adicional?\nDigite 1 para sim e 2 para não");
+                            escolhaAdicional = int.Parse(Console.ReadLine());
+                        } while (escolhaAdicional == 1);
+                        foreach (string nome in cliente)
+                            Console.WriteLine("Cliente => {0}", nome);
+                        pizzaCatu.retorno();
+
+                        cliente.RemoveAt(0);
+                        break;
+                    case 2:
+                    Console.Clear();
+                        Console.WriteLine("Gostaria de uma borda recheada?, Digite 1 para sim e 2 para não");
+                        validacao = int.Parse(Console.ReadLine());
+                        if (validacao == 1)
+                            pizzaCatu.BordaRecheada = true;
+                        else
+                            pizzaCatu.BordaRecheada = false;
+                        foreach (string nome in cliente)
+                            Console.WriteLine("Cliente => {0}", nome);
+                        pizzaCatu.retorno();
+                        cliente.RemoveAt(0);
+                        break;
+                }
+            }
+            else if(numeroEscolhido==7){
+              Bebidas bebida = new Bebidas();
+                Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para Refrigerante \nDigite 2 para Suco\nDigite 3 para Refrigerante");
+                try{
+                  int resposta3 = int.Parse(Console.ReadLine());
+
+                  Console.WriteLine("\nEscolha o tipo de bebida:\nDigite 1 para 300 ml \nDigite 2 para 600 ml\nDigite 3 para 2 litros");
+                  int quantidade = int.Parse(Console.ReadLine());
+                  bebida.setQuantidade(quantidade);
+                  if((quantidade <=3) && (quantidade >=1)){
+                    if (resposta3 == 1)
+                      bebida.setTipo("Refrigerante");
+                    else if(resposta3 == 2)
+                      bebida.setTipo("Suco");            
+                    else
+                      bebida.setTipo("Cerveja");
+                    
+                    bebida.setNome("Bebida");
+                    Console.Clear();
+                    bebida.Retorno();
+                  }
+                  else{
+                    mostrarError();
+                  }
+                }
+                catch(FormatException){
+                  mostrarError();
+                }
+            }
+            else if (numeroEscolhido==8){
+              Sorvete sorvete = new Sorvete();
+                Console.WriteLine("\nEscolha o tipo de sorvete:\nDigite 1 para casquinha\nDigite 2 para copinho\nDigite 3 para Milk Shake");
+                try{
+                  int resposta4 = int.Parse(Console.ReadLine());
+                  if((resposta4 <=3) && (resposta4 >=1)){
+                    if(resposta4==1)
+                      sorvete.setTipo("Casquinha");
+                    else if (resposta4==2)
+                      sorvete.setTipo("Copo");
+                    else
+                      sorvete.setTipo("MilkShake");
+
+                    sorvete.setNome("Sorvete");
+                    Console.Clear();
+                    sorvete.Retorno();
+                }
+                else{
+                  mostrarError();
+                }
+                }
+                catch(FormatException){
+                  mostrarError();
+              }
+            }
+            else if (numeroEscolhido == 9)
             {
                 Console.WriteLine("Digite a senha para entrar:");
                 string senha = Console.ReadLine();
                 if (senha == "aed2019")
                 {
                     Console.Clear();
-                    Console.WriteLine("O a taxa de lucratividade do restaurante é {0}%", Egestor.Gestor().ToString("F"));
+                    Console.WriteLine("O a taxa de lucratividade do restaurante é {0}%\n", Egestor.Gestor().ToString("F"));
 
                     if (Egestor.Gestor() > 20.00)
-                        Console.WriteLine("A Taxa de lucro está exorbitante");
+                        Console.WriteLine("A Taxa de lucro está exorbitante\n");
                     else if (Egestor.Gestor() > 0.00)
-                        Console.WriteLine("A taxa de lucro está normal talvez seja melhor repensar o negócio");
+                        Console.WriteLine("A taxa de lucro está normal talvez seja melhor repensar o negócio\n");
                     else
-                        Console.WriteLine("A taxa de lucro está negativa seu negócio gera prejuízo");
+                        Console.WriteLine("A taxa de lucro está negativa seu negócio gera prejuízo\n");
                 }
                 else
-                    Console.WriteLine("\nSenha incorreta");
+                    Console.WriteLine("\nSenha incorreta\n");
             }
             else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Digite apenas 1 para Funcionário e 2 para Gestor");
-            }
+              mostrarError();
+
         }
     }
 }
