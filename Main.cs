@@ -26,7 +26,7 @@ class MainClass
         while (true)
         {
             Console.ResetColor();
-            Console.WriteLine("Digite o número de acordo com o que deseja:\n\n---------------- CARDÁPIO ----------------\n1 - Hambúrguer\n2 - Hambúrguer de calabresa\n3 - Xtudo\n4 - Dobradão\n5 - Pizza\n6 - Pizza de catupiry\n7 - Bebidas\n8 - Sorvete\n------------------------------------------\n\n----------------- GESTÃO -----------------\n9 - Gestor\n------------------------------------------");
+            Console.WriteLine("Digite o número de acordo com oque deseja:\n\n---------------- CARDÁPIO----------------\n1 - Hambúrguer\n2 - Hambúrguer decalabresa\n3 - Xtudo\n4 - Dobradão\n5 - Pizza\n6 -Pizza de catupiry\n7 - Bebidas\n8 -Sorvete\n------------------------------------------\\n----------------- GESTÃO -----------------\n9 -Gestor\n------------------------------------------");
             try
             {
                 numeroEscolhido = int.Parse(Console.ReadLine());
@@ -336,8 +336,10 @@ class MainClass
                     Console.WriteLine("\nSenha incorreta\n");
             }
             else
-                mostrarError();
-
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Digite apenas os números de 1 até 9\n");
+            }
         }
     }
 }
