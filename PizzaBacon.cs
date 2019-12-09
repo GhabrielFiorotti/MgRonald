@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 
-class PizzaCatupiry : Pizza{
+class PizzaBacon : Pizza{
   
   private int qtd;
   private string tipo;
@@ -13,10 +13,12 @@ class PizzaCatupiry : Pizza{
     set{this.bordaRecheada=value;}
   }
 
-  public PizzaCatupiry() :base() 
+  public PizzaBacon() :base() 
   {
-    produtoPizza.Catupiry = 2;
     produtoPizza.Mussarela = 3;
+    produtoPizza.Calabresa = 3;
+    produtoPizza.Bacon = 3;
+
   }
 
   public void setNome(string name){
@@ -29,16 +31,12 @@ class PizzaCatupiry : Pizza{
   }
   public void setAdicional(string tipo,int qtd)
   {
-    if(tipo == "catupiry")
+    if(tipo == "Bacon")
       produtoPizza.Catupiry =qtd;
     if(tipo == "mussarela")
       produtoPizza.Mussarela =qtd;
     if(tipo == "frango")
       produtoPizza.Frango = qtd;
-    if(tipo == "palmito")
-      produtoPizza.Palmito = qtd;
-    if(tipo == "ovo")       
-      produtoPizza.Ovo = qtd;  
   }
   public void retorno(){
     if(bordaRecheada){
@@ -59,7 +57,8 @@ class PizzaCatupiry : Pizza{
     }
     Console.Clear();
     Console.WriteLine("============Pedidos=============");
-    Console.WriteLine("Nome-> "+nome+"\nPreço-> "+valorVenda.ToString("N2")+"\nCalorias-> 2000\n");
+
+    Console.WriteLine("Nome-> "+nome+"\nPreço-> "+valorVenda.ToString("N2")+"\nCalorias-> 2200\n");
   }
 
 
